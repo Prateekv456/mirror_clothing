@@ -1,16 +1,7 @@
 import { useGLTF } from "@react-three/drei";
-import { useEffect, useRef } from "react";
 
 export default function TShirtModel({ position }) {
-  const { scene } = useGLTF("/tshirt.glb"); // Ensure it's in 'public/'
-  const modelRef = useRef();
+  const { scene } = useGLTF("/tshirt.glb");
 
-  useEffect(() => {
-    if (modelRef.current) {
-      modelRef.current.position.set(...position);
-      console.log("📌 Updated Model Position:", position);
-    }
-  }, [position]);
-
-  return <primitive ref={modelRef} object={scene} scale={5} />;
+  return <primitive object={scene} position={position} scale={1.2} />;
 }
